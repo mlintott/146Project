@@ -33,4 +33,5 @@ public class Line : MonoBehaviour {
  
         return Vector2.Distance(_renderer.GetPosition(_renderer.positionCount - 1), pos) > DrawManager.RESOLUTION;
     }
+
 }
