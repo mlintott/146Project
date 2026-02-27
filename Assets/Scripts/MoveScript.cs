@@ -5,57 +5,55 @@ using UnityEngine;
 public class MoveScript : MonoBehaviour
 {
     private float holdStartTime;
-    private bool isHolding = false;
-    public float holdDurationThreshold = 0.2f; // Time in seconds to qualify as a "hold"
-    
+    private Vector2 startWorldPosition;
+
+    private bool hasDragged = false;
+
+    public float holdDurationThreshold = 0.2f;
+    public float dragThreshold = 0.1f; // WORLD units (same scale as RESOLUTION)
+
+    private Camera _cam;
+
+    void Start()
+    {
+        _cam = Camera.main;
+    }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Only true on the first frame of the press
+        Vector2 currentWorldPos = _cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetMouseButtonDown(0))
         {
-            
             holdStartTime = Time.time;
-            isHolding = true;
-            StartCoroutine(CheckHold());
+            startWorldPosition = currentWorldPos;
+            hasDragged = false;
         }
-        else if (Input.GetMouseButtonUp(0)) // Only true on the first frame of the release
+
+        if (Input.GetMouseButton(0))
         {
-            if ( isHolding && Time.time - holdStartTime < holdDurationThreshold)
+            float dragDistance = Vector2.Distance(startWorldPosition, currentWorldPos);
+
+            if (dragDistance > dragThreshold)
             {
-                // Action for a short click (tap)
-
-                Vector3 mousePosition = Input.mousePosition;
-                
-                // Convert the screen coordinates to world coordinates
-                // The Z value determines how far from the camera the world point will be.
-                // For a 2D game using an Orthographic camera, a value like 10 (or your camera's
-                // Z position) often works, but the ScreenToWorldPoint method handles Z appropriately 
-                // when the transform.position is later set to a Vector2 implicitly or explicitly.
-                mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-                
-                // Ensure the player stays on the same Z-plane in a 2D environment
-                // This is crucial to prevent the object from moving out of the camera's view.
-                mousePosition.z = transform.position.z;
-
-                // Set the player's position to the new mouse position
-                transform.position = mousePosition;
-                Debug.Log("Short Click Action Executed");
+                hasDragged = true;
             }
-            isHolding = false; // Stop the hold check
-            StopCoroutine(CheckHold());
         }
-    }
 
-    private IEnumerator CheckHold()
-    {
-        // Wait for the specified threshold time
-        yield return new WaitForSeconds(holdDurationThreshold);
-
-        // If the button is still held after the time, it's a long press
-        if (isHolding)
+        if (Input.GetMouseButtonUp(0))
         {
-            // Action for a long press (hold)
-            Debug.Log("Long Hold Action Executed");
+            float heldTime = Time.time - holdStartTime;
+
+            if (!hasDragged && heldTime < holdDurationThreshold)
+            {
+                MoveTo(currentWorldPos);
+            }
         }
     }
 
+    private void MoveTo(Vector2 worldPos)
+    {
+        transform.position = new Vector3(worldPos.x, worldPos.y, transform.position.z);
+        Debug.Log("Moved!");
+    }
 }
