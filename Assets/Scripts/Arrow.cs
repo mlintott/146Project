@@ -19,8 +19,8 @@ public class Arrow : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifetime);
-
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log($"[Arrow] player found: {player != null}, playerHealth found: {playerHealth != null}");
         if (player != null)
         {
             playerHealth = player.GetComponent<PlayerHealth>();
@@ -32,7 +32,6 @@ public class Arrow : MonoBehaviour
     {
         if (isInitialized)
         {
-            Debug.Log($"[Arrow] Moving, dir: {direction}, speed: {speed}");
             transform.position += direction * speed * Time.deltaTime;
             CheckForPlayerCollision();
         }
@@ -60,6 +59,7 @@ public class Arrow : MonoBehaviour
 
         if (isColliding)
         {
+            Debug.Log("[Arrow] Hit player, dealing damage!");
             playerHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
@@ -67,7 +67,6 @@ public class Arrow : MonoBehaviour
 
     public void SetDirection(Vector3 dir, float arrowSpeed)
     {
-        Debug.Log($"[Arrow] SetDirection called, dir: {dir}, speed: {arrowSpeed}");
         direction = dir.normalized;
         speed = arrowSpeed;
         isInitialized = true;

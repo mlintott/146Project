@@ -78,24 +78,23 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private void OnPlayerDeath()
-    {
-        Debug.Log("Player died! No lives remaining.");
-        
-        // Play death effect (smoke animation) if DeathEffect component exists
-        DeathEffect deathEffect = GetComponent<DeathEffect>();
-        if (deathEffect != null)
-        {
-            deathEffect.PlayDeathEffect();
-        }
-        
-        if (PlayerDied != null)
-        {
-            PlayerDied.Invoke();
-        }
-        
-        // You can add death logic here (disable player, show game over, etc.)
-        // For now, we'll just log it
-    }
+{
+    Debug.Log("Player died! No lives remaining.");
+    
+    // Disable movement
+    MoveScript moveScript = GetComponent<MoveScript>();
+    if (moveScript != null) moveScript.enabled = false;
+    
+    // Disable drawing
+    DrawManager drawManager = GetComponent<DrawManager>();
+    if (drawManager != null) drawManager.enabled = false;
+
+    DeathEffect deathEffect = GetComponent<DeathEffect>();
+    if (deathEffect != null) deathEffect.PlayDeathEffect();
+
+    if (PlayerDied != null) PlayerDied.Invoke();
+}
+    
 
     // Public method to reset health (called by game reset systems)
     public void ResetHealth()
