@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87bfce1f91133486b9e348f597548d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
+  range: 10
   arrowPrefab: {fileID: 5282450112193257060, guid: 79117887752fa4cd78b21e872ae3b986, type: 3}
   arrowSpeed: 8
   shootDelay: 0.3
