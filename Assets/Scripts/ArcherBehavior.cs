@@ -1,8 +1,4 @@
-// ArcherBehavior.cs
-// This file was initially generated with Cursor and edited for use in this exercise.
-
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArcherBehavior : MonoBehaviour
@@ -11,11 +7,19 @@ public class ArcherBehavior : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private float arrowSpeed = 8f;
     [SerializeField] private float shootDelay = 0.3f;
+
+    [SerializeField] private float cooldown = 2f;
+
+    // Set to 0 for “shoot ASAP when in range”.
+    [SerializeField] private float initialAttackDelay = 0f;
+
+    // If your sprite faces the “wrong way”, toggle this in Inspector.
+    [SerializeField] private bool invertFacing = false;
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private GameObject player;
-    [SerializeField] private float cooldown = 2f;
-    [SerializeField] private float initialAttackDelay = 10f;
+
     private float lastShotTime;
     private float inRangeStartTime = -1f;
 
@@ -31,17 +35,8 @@ public class ArcherBehavior : MonoBehaviour
         lastShotTime = Time.time - cooldown;
         inRangeStartTime = -1f;
         startPosition = transform.position;
-    }
 
-    private bool isInRange()
-    {
-        float distance = calculateDistanceToPlayer();
-        return distance <= range;
-    }
-
-    private bool cooldownOver()
-    {
-        return Time.time >= lastShotTime + cooldown;
+        if (animator != null) animator.SetBool("IsShooting", false);
     }
 
     void Update()
@@ -54,45 +49,48 @@ public class ArcherBehavior : MonoBehaviour
             if (player == null) return;
         }
 
-        facePlayer();
+        FacePlayer();
 
-        bool inRange = isInRange();
-        if (inRange)
-        {
-            if (inRangeStartTime < 0f)
-            {
-                inRangeStartTime = Time.time;
-            }
-
-            bool initialDelayOver = Time.time >= inRangeStartTime + initialAttackDelay;
-            if (initialDelayOver && cooldownOver())
-            {
-                animator.SetBool("IsShooting", true);
-                lastShotTime = Time.time;
-                StartCoroutine(ShootArrow());
-            }
-        }
-        else
+        if (!IsInRange())
         {
             inRangeStartTime = -1f;
+            if (animator != null) animator.SetBool("IsShooting", false);
+            return;
         }
-    }
 
-    private float calculateDistanceToPlayer()
-    {
-        if (player == null) return float.PositiveInfinity;
-        return Vector3.Distance(transform.position, player.transform.position);
-    }
+        if (inRangeStartTime < 0f)
+            inRangeStartTime = Time.time;
 
-    private void facePlayer()
-    {
-        if (spriteRenderer != null && player != null)
+        bool initialDelayOver = Time.time >= inRangeStartTime + initialAttackDelay;
+        if (initialDelayOver && CooldownOver())
         {
-            spriteRenderer.flipX = player.transform.position.x < transform.position.x;
+            lastShotTime = Time.time;
+            if (animator != null) animator.SetBool("IsShooting", true);
+            StartCoroutine(ShootArrow());
         }
     }
 
-    // Called by player melee (existing)
+    private bool IsInRange()
+    {
+        if (player == null) return false;
+        return Vector3.Distance(transform.position, player.transform.position) <= range;
+    }
+
+    private bool CooldownOver()
+    {
+        return Time.time >= lastShotTime + cooldown;
+    }
+
+    private void FacePlayer()
+    {
+        if (spriteRenderer == null || player == null) return;
+
+        bool shouldFlip = player.transform.position.x < transform.position.x;
+        if (invertFacing) shouldFlip = !shouldFlip;
+
+        spriteRenderer.flipX = shouldFlip;
+    }
+
     public bool TryTakeDamage(Vector3 attackerPosition, float attackRange = 1.0f)
     {
         float distance = Vector3.Distance(transform.position, attackerPosition);
@@ -105,7 +103,6 @@ public class ArcherBehavior : MonoBehaviour
         return false;
     }
 
-    // Option A: called by Line when it touches this archer
     public void KillFromLine()
     {
         if (isDead) return;
@@ -118,36 +115,30 @@ public class ArcherBehavior : MonoBehaviour
         StopAllCoroutines();
 
         DeathEffect deathEffect = GetComponent<DeathEffect>();
-        if (deathEffect != null)
-        {
-            deathEffect.PlayDeathEffect();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (deathEffect != null) deathEffect.PlayDeathEffect();
+        else Destroy(gameObject);
     }
 
     private IEnumerator ShootArrow()
     {
+        // Keep them in a “shooting pose” for the delay, then reset the bool.
         yield return new WaitForSeconds(shootDelay);
 
+        if (animator != null) animator.SetBool("IsShooting", false);
         if (isDead) yield break;
 
-        if (arrowPrefab != null && player != null && isInRange())
-        {
-            Vector3 spawnPosition = transform.position;
-            Vector3 direction = (player.transform.position - spawnPosition).normalized;
-            Quaternion arrowRotation = CalculateRotationFromDirection(direction);
+        if (arrowPrefab == null || player == null) yield break;
+        if (!IsInRange()) yield break;
 
-            GameObject arrow = Instantiate(arrowPrefab, spawnPosition, arrowRotation);
+        Vector3 spawnPosition = transform.position;
+        Vector3 direction = (player.transform.position - spawnPosition).normalized;
 
-            Arrow arrowScript = arrow.GetComponent<Arrow>();
-            if (arrowScript != null)
-            {
-                arrowScript.SetDirection(direction, arrowSpeed);
-            }
-        }
+        Quaternion arrowRotation = CalculateRotationFromDirection(direction);
+        GameObject arrow = Instantiate(arrowPrefab, spawnPosition, arrowRotation);
+
+        Arrow arrowScript = arrow.GetComponent<Arrow>();
+        if (arrowScript != null)
+            arrowScript.SetDirection(direction, arrowSpeed);
     }
 
     private Quaternion CalculateRotationFromDirection(Vector3 direction)
@@ -162,14 +153,13 @@ public class ArcherBehavior : MonoBehaviour
         StopAllCoroutines();
 
         DeathEffect deathEffect = GetComponent<DeathEffect>();
-        if (deathEffect != null)
-        {
-            deathEffect.ReenableComponents();
-        }
+        if (deathEffect != null) deathEffect.ReenableComponents();
 
         transform.position = startPosition;
 
         inRangeStartTime = -1f;
         lastShotTime = Time.time - cooldown;
+
+        if (animator != null) animator.SetBool("IsShooting", false);
     }
 }
