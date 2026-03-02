@@ -122,11 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  arrowPrefab: {fileID: 0}
+  arrowPrefab: {fileID: 5282450112193257060, guid: 79117887752fa4cd78b21e872ae3b986, type: 3}
   arrowSpeed: 8
   shootDelay: 0.3
   cooldown: 2
-  initialAttackDelay: 5
+  initialAttackDelay: 0
+  invertFacing: 0
 --- !u!58 &1607681905905931773
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -159,9 +160,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.029701829, y: 0.06534386}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.73963463
 --- !u!114 &5992993191688091156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22475143d602b420294be9b56279a026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smokeEffectPrefab: {fileID: 0}
+  smokeEffectPrefab: {fileID: 6208769619528912958, guid: dca104460a6fe41aabe0996d9b62b512, type: 3}
   effectOffset: {x: 0, y: 0.5, z: 0}
   destroyDelay: 0.1
   parentEffectToObject: 0

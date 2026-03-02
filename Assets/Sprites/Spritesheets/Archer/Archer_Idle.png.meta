@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fe448e07cf1a84c44bd1746a87cb50f0
+guid: cabbd4ae5d8674502b797419a67b5d6c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer_Run_0
+      name: Archer_Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ee836788c294448a8113dad5adf5cb9
-      internalID: 609353127
+      spriteID: 8f8e12d3a7f514bdd963b810257ffd12
+      internalID: -1382158743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Run_1
+      name: Archer_Idle_1
       rect:
         serializedVersion: 2
         x: 192
@@ -132,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 751be6c4c7d6d43ad82832df867ac4bd
-      internalID: 557628422
+      spriteID: ba9967906c9dc41f4abd4aa587cc6977
+      internalID: 541603013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Run_2
+      name: Archer_Idle_2
       rect:
         serializedVersion: 2
         x: 384
@@ -153,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d45e1de04036742878e0d4464ace200d
-      internalID: 225207954
+      spriteID: cdca73cc618ee47dbbe35bc8bd2c1bd5
+      internalID: 622621678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Run_3
+      name: Archer_Idle_3
       rect:
         serializedVersion: 2
         x: 576
@@ -174,8 +187,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b887a29d7964740d09d997d2d844cd6f
-      internalID: 280214277
+      spriteID: 278a0ae46bd1046268f29e5941c4f784
+      internalID: 165651286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6df8f42b8649431c8429495cd539e47
+      internalID: -1101376633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dce178aeae024b5aa4f67ab3a6f6b74
+      internalID: -1807586292
       vertices: []
       indices: 
       edges: []
@@ -191,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Archer_Run_0: 609353127
-      Archer_Run_1: 557628422
-      Archer_Run_2: 225207954
-      Archer_Run_3: 280214277
+      Archer_Idle_0: -1382158743
+      Archer_Idle_1: 541603013
+      Archer_Idle_2: 622621678
+      Archer_Idle_3: 165651286
+      Archer_Idle_4: -1101376633
+      Archer_Idle_5: -1807586292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

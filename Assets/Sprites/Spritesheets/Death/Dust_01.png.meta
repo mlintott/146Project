@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3c5f2e9f1633413585eb4647f7e4709
+guid: 1e1d1787d7a344282a4926af48aad268
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer_Shoot_0
+      name: Dust_01_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e51c814789bae4af4bb318b6ef668b5a
-      internalID: 646411060
+      spriteID: d78f9ba9aa6ff4a5fa025e5a856599f7
+      internalID: 319481792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Shoot_1
+      name: Dust_01_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91ec9e7f2af549b492764d883ca2783
+      internalID: 1382835692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_01_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d337c3b4c7c0443a79d828111a91dbce
+      internalID: -1207991649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_01_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 192
-        height: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +174,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb0e9c5c6a9e4f47aba1193f1d23883
-      internalID: 591187062
+      spriteID: ba9a8f3d1495a4cc981c62b7d6dd0398
+      internalID: 930855294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Shoot_2
+      name: Dust_01_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d127ad444d3747d38fa3f637ab97061
+      internalID: 430645069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_01_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53d6164cfebf48148af6307519a55ee
+      internalID: -758998127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dust_01_6
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 192
-        height: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9aff8b8db5ceb4878bf83e4c4a680622
-      internalID: 578699346
+      spriteID: da8017d81d7e2478d9577571267c95e5
+      internalID: 1804641027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Shoot_3
+      name: Dust_01_7
       rect:
         serializedVersion: 2
-        x: 576
+        x: 448
         y: 0
-        width: 192
-        height: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,92 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea86a101515874161a3313b9e411044c
-      internalID: -385168064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Shoot_4
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b148881bdf7c4109b2f1e349504f651
-      internalID: -1847697524
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Shoot_5
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71304b4fb862748a8aeb6b724702bd61
-      internalID: -1299963108
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Shoot_6
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edc3502bc499a40de9ff7e90ba3534d3
-      internalID: -1194129977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer_Shoot_7
-      rect:
-        serializedVersion: 2
-        x: 1344
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a56f7ccf47f2141cea9a74f690334b5a
-      internalID: 1609042953
+      spriteID: 53074ccab1e594f0196b64a03c8cb890
+      internalID: -838402988
       vertices: []
       indices: 
       edges: []
@@ -275,14 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Archer_Shoot_0: 646411060
-      Archer_Shoot_1: 591187062
-      Archer_Shoot_2: 578699346
-      Archer_Shoot_3: -385168064
-      Archer_Shoot_4: -1847697524
-      Archer_Shoot_5: -1299963108
-      Archer_Shoot_6: -1194129977
-      Archer_Shoot_7: 1609042953
+      Dust_01_0: 319481792
+      Dust_01_1: 1382835692
+      Dust_01_2: -1207991649
+      Dust_01_3: 930855294
+      Dust_01_4: 430645069
+      Dust_01_5: -758998127
+      Dust_01_6: 1804641027
+      Dust_01_7: -838402988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

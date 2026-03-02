@@ -56,6 +56,12 @@ public class Line : MonoBehaviour
     {
         if (IsDead) return;
         if (other.CompareTag("Player")) return;
+        if (other.CompareTag("Arrow"))
+        {
+            Destroy(other.gameObject);
+            ClearAndDestroy();
+        }
+        
 
         Debug.Log($"[Line] Hit collider: {other.name}", this);
 

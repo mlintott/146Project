@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cabbd4ae5d8674502b797419a67b5d6c
+guid: d3c5f2e9f1633413585eb4647f7e4709
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer_Idle_0
+      name: Archer_Shoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f8e12d3a7f514bdd963b810257ffd12
-      internalID: -1382158743
+      spriteID: e51c814789bae4af4bb318b6ef668b5a
+      internalID: 646411060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Idle_1
+      name: Archer_Shoot_1
       rect:
         serializedVersion: 2
         x: 192
@@ -132,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba9967906c9dc41f4abd4aa587cc6977
-      internalID: 541603013
+      spriteID: 6fb0e9c5c6a9e4f47aba1193f1d23883
+      internalID: 591187062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Idle_2
+      name: Archer_Shoot_2
       rect:
         serializedVersion: 2
         x: 384
@@ -153,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdca73cc618ee47dbbe35bc8bd2c1bd5
-      internalID: 622621678
+      spriteID: 9aff8b8db5ceb4878bf83e4c4a680622
+      internalID: 578699346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Idle_3
+      name: Archer_Shoot_3
       rect:
         serializedVersion: 2
         x: 576
@@ -174,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 278a0ae46bd1046268f29e5941c4f784
-      internalID: 165651286
+      spriteID: ea86a101515874161a3313b9e411044c
+      internalID: -385168064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Idle_4
+      name: Archer_Shoot_4
       rect:
         serializedVersion: 2
         x: 768
@@ -195,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6df8f42b8649431c8429495cd539e47
-      internalID: -1101376633
+      spriteID: 7b148881bdf7c4109b2f1e349504f651
+      internalID: -1847697524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer_Idle_5
+      name: Archer_Shoot_5
       rect:
         serializedVersion: 2
         x: 960
@@ -216,8 +229,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dce178aeae024b5aa4f67ab3a6f6b74
-      internalID: -1807586292
+      spriteID: 71304b4fb862748a8aeb6b724702bd61
+      internalID: -1299963108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Shoot_6
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc3502bc499a40de9ff7e90ba3534d3
+      internalID: -1194129977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archer_Shoot_7
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56f7ccf47f2141cea9a74f690334b5a
+      internalID: 1609042953
       vertices: []
       indices: 
       edges: []
@@ -233,12 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Archer_Idle_0: -1382158743
-      Archer_Idle_1: 541603013
-      Archer_Idle_2: 622621678
-      Archer_Idle_3: 165651286
-      Archer_Idle_4: -1101376633
-      Archer_Idle_5: -1807586292
+      Archer_Shoot_0: 646411060
+      Archer_Shoot_1: 591187062
+      Archer_Shoot_2: 578699346
+      Archer_Shoot_3: -385168064
+      Archer_Shoot_4: -1847697524
+      Archer_Shoot_5: -1299963108
+      Archer_Shoot_6: -1194129977
+      Archer_Shoot_7: 1609042953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
