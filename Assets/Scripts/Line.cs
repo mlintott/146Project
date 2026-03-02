@@ -48,6 +48,10 @@ public class Line : MonoBehaviour
     private bool CanAppend(Vector2 worldPos)
     {
         if (_renderer.positionCount == 0) return true;
+        
+        Vector2 first = _renderer.GetPosition(0);
+        if (Vector2.Distance(first, worldPos) > DrawManager.MAXDISTANCE) return false;
+        
         Vector2 last = _renderer.GetPosition(_renderer.positionCount - 1);
         return Vector2.Distance(last, worldPos) > DrawManager.RESOLUTION;
     }
@@ -77,14 +81,14 @@ public class Line : MonoBehaviour
     }
 
     private void ClearAndDestroy()
-{
-    IsDead = true;
-    _renderer.positionCount = 0;
-    _renderer.enabled = false;
-    gameObject.SetActive(false); // force hide everything
-    _collider.enabled = false;
-    Invoke(nameof(DestroyNow), 0.05f);
-}
+    {
+        IsDead = true;
+        _renderer.positionCount = 0;
+        _renderer.enabled = false;
+        gameObject.SetActive(false); // force hide everything
+        _collider.enabled = false;
+        Invoke(nameof(DestroyNow), 0.05f);
+    }
 
     private void DestroyNow()
     {

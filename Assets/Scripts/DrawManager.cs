@@ -9,6 +9,7 @@ public class DrawManager : MonoBehaviour
     private Line _currentLine;
     private Vector2 _startPos;
     private bool _isDragging;
+    [SerializeField] public const float MAXDISTANCE = 5f;
 
     void Start()
     {
@@ -27,9 +28,10 @@ public class DrawManager : MonoBehaviour
 
         if (Input.GetMouseButton(0) && _isDragging)
         {
-            float distance = Vector2.Distance(_startPos, mousePos);
+            float distanceNextPos = Vector2.Distance(_startPos, mousePos);
+            float distanceToPlayer = Vector2.Distance(_startPos, transform.position);
 
-            if (_currentLine == null && distance > RESOLUTION)
+            if (_currentLine == null && distanceNextPos > RESOLUTION && distanceToPlayer <= MAXDISTANCE)
             {
                 _currentLine = Instantiate(_linePrefab, _startPos, Quaternion.identity);
                 _currentLine.SetPosition(_startPos);
