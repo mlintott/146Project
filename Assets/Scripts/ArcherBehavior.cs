@@ -7,13 +7,8 @@ public class ArcherBehavior : MonoBehaviour
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private float arrowSpeed = 8f;
     [SerializeField] private float shootDelay = 0.3f;
-
     [SerializeField] private float cooldown = 2f;
-
-    // Set to 0 for “shoot ASAP when in range”.
     [SerializeField] private float initialAttackDelay = 0f;
-
-    // If your sprite faces the “wrong way”, toggle this in Inspector.
     [SerializeField] private bool invertFacing = false;
 
     private Animator animator;
@@ -31,6 +26,7 @@ public class ArcherBehavior : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log($"[Archer] Start, player found: {player != null}");
 
         lastShotTime = Time.time - cooldown;
         inRangeStartTime = -1f;
@@ -121,17 +117,19 @@ public class ArcherBehavior : MonoBehaviour
 
     private IEnumerator ShootArrow()
     {
-        // Keep them in a “shooting pose” for the delay, then reset the bool.
         yield return new WaitForSeconds(shootDelay);
 
         if (animator != null) animator.SetBool("IsShooting", false);
-        if (isDead) yield break;
+        if (isDead) { Debug.Log("[Archer] isDead, bailing"); yield break; }
 
-        if (arrowPrefab == null || player == null) yield break;
-        if (!IsInRange()) yield break;
+        if (arrowPrefab == null) { Debug.Log("[Archer] arrowPrefab is null!"); yield break; }
+        if (player == null) { Debug.Log("[Archer] player is null!"); yield break; }
+        if (!IsInRange()) { Debug.Log("[Archer] not in range, bailing"); yield break; }
 
         Vector3 spawnPosition = transform.position;
         Vector3 direction = (player.transform.position - spawnPosition).normalized;
+
+        Debug.Log($"[Archer] spawnPos: {spawnPosition}, playerPos: {player.transform.position}, dir: {direction}");
 
         Quaternion arrowRotation = CalculateRotationFromDirection(direction);
         GameObject arrow = Instantiate(arrowPrefab, spawnPosition, arrowRotation);
@@ -139,6 +137,8 @@ public class ArcherBehavior : MonoBehaviour
         Arrow arrowScript = arrow.GetComponent<Arrow>();
         if (arrowScript != null)
             arrowScript.SetDirection(direction, arrowSpeed);
+        else
+            Debug.Log("[Archer] Arrow script NOT found on prefab!");
     }
 
     private Quaternion CalculateRotationFromDirection(Vector3 direction)
