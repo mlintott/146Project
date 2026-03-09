@@ -1,0 +1,743 @@
+fileFormatVersion: 2
+guid: 5f8901fdfb4c54f2d9abd8633885acdd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17614ebc57fa94411b53773bea77a775
+      internalID: -1600084629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda9c2b14decf45fc8297c70bbfa6c4f
+      internalID: -864135403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8368f2250d18a47a5be2f96ab534e05e
+      internalID: -182386974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_3
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16182ea355d5484998a4ce49e924b80
+      internalID: -240870548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_4
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02d53e04a821344e29d33705cf70bdec
+      internalID: 1394483980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ca119a0c73f4b78973906a7bd1fb5e
+      internalID: -1677434296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_6
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 16
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64802635cdda44f4bac22e2f13d4b66
+      internalID: -2012619080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_7
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 15
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc7aba4730234b7481a7ea342cd1419
+      internalID: 2047620140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_8
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0ed2e785ef4479baa69e59710c08ef
+      internalID: -759772346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_9
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cbff4414e0e4d5497e25732a3226ce
+      internalID: 234115662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_10
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1824471aa2a40c1b3d02f7b1687a9d
+      internalID: 626376874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_11
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f6460d6e17a40f493f51633c7f0885
+      internalID: 109651839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_12
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 16
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860cf8ee79aa045d6869d1bff3cc2cce
+      internalID: -719460882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c985594fa95d4dcca154f2be67f0d93
+      internalID: 890443769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_14
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 16
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9916f8f84610747019beccb90aa488b7
+      internalID: 141181484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_15
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 16
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc183ca244f9044f3a922f2ea94b5e3d
+      internalID: -1001391496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_16
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f8dc2114071f44cfa17893c42e8db8c
+      internalID: -437930536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_17
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ef6f3fb885f4863805a13a8b8ca402
+      internalID: 998949820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_18
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617dcf7284907417cb4346ac61fd98df
+      internalID: -525772692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_19
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba68bc0d44d2741c988238e7e7049668
+      internalID: -833498800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_20
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 16
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8d62e1571c740c4b79690096d53ad9
+      internalID: -782012451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_21
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 16
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0fb721126ba4109930f641f68cceae
+      internalID: 277638620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_22
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 16
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50125bca796154d829c362d0d3a59935
+      internalID: 1432402273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_23
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 16
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982c8d31423e94b1fa04313af2fe0685
+      internalID: 1409373349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_24
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 16
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b722b853ed846c9bb72fd7a17c5bdd
+      internalID: -994285862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_25
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 16
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb37b7c75cac4d6f9674beafda12c77
+      internalID: 1228088681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_26
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 16
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd1c98b85f5c44e79be67de0b467556
+      internalID: 546257389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rat archer sprite sheet Idle_27
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 16
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cda7287b3112463580e44519ef99133
+      internalID: 1839513058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Rat archer sprite sheet Idle_0: -1600084629
+      Rat archer sprite sheet Idle_1: -864135403
+      Rat archer sprite sheet Idle_10: 626376874
+      Rat archer sprite sheet Idle_11: 109651839
+      Rat archer sprite sheet Idle_12: -719460882
+      Rat archer sprite sheet Idle_13: 890443769
+      Rat archer sprite sheet Idle_14: 141181484
+      Rat archer sprite sheet Idle_15: -1001391496
+      Rat archer sprite sheet Idle_16: -437930536
+      Rat archer sprite sheet Idle_17: 998949820
+      Rat archer sprite sheet Idle_18: -525772692
+      Rat archer sprite sheet Idle_19: -833498800
+      Rat archer sprite sheet Idle_2: -182386974
+      Rat archer sprite sheet Idle_20: -782012451
+      Rat archer sprite sheet Idle_21: 277638620
+      Rat archer sprite sheet Idle_22: 1432402273
+      Rat archer sprite sheet Idle_23: 1409373349
+      Rat archer sprite sheet Idle_24: -994285862
+      Rat archer sprite sheet Idle_25: 1228088681
+      Rat archer sprite sheet Idle_26: 546257389
+      Rat archer sprite sheet Idle_27: 1839513058
+      Rat archer sprite sheet Idle_3: -240870548
+      Rat archer sprite sheet Idle_4: 1394483980
+      Rat archer sprite sheet Idle_5: -1677434296
+      Rat archer sprite sheet Idle_6: -2012619080
+      Rat archer sprite sheet Idle_7: 2047620140
+      Rat archer sprite sheet Idle_8: -759772346
+      Rat archer sprite sheet Idle_9: 234115662
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
