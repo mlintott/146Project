@@ -153,7 +153,7 @@ public class ArcherBehavior : MonoBehaviour
         StopAllCoroutines();
 
         DeathEffect deathEffect = GetComponent<DeathEffect>();
-        if (deathEffect != null) deathEffect.ReenableComponents();
+        if (deathEffect != null) deathEffect.ResetEffect();
 
         transform.position = startPosition;
 
