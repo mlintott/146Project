@@ -2,99 +2,222 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Plays a "poof" death effect on the Player — scales up and fades out,
-/// then destroys (or hides) the GameObject.
-///
-/// SETUP:
-/// 1. Add this component to your Player GameObject.
-/// 2. Your Player's SpriteRenderer will be used automatically.
-///    If your visuals are on a child object, assign it manually in the Inspector.
-/// 3. Tune the feel with the fields below — no other setup needed.
+/// Handles death effects (like smoke animations) when a GameObject is destroyed.
+/// Attach this to any GameObject that should play a death effect.
 /// </summary>
 public class DeathEffect : MonoBehaviour
 {
-    [Header("Poof Settings")]
-    [Tooltip("How long the poof animation takes in seconds.")]
-    [SerializeField] private float duration = 0.6f;
+    [Header("Death Effect Settings")]
+    [Tooltip("The smoke animation prefab or particle system to instantiate on death")]
+    [SerializeField] private GameObject smokeEffectPrefab;
+    
+    [Tooltip("Offset from the GameObject's position where the smoke should appear (default: above)")]
+    [SerializeField] private Vector3 effectOffset = new Vector3(0, 0.5f, 0);
+    
+    [Tooltip("Delay before destroying the GameObject (to allow smoke animation to start)")]
+    [SerializeField] private float destroyDelay = 0.1f;
+    
+    [Tooltip("If true, the smoke effect will be a child of this GameObject. If false, it will be independent.")]
+    [SerializeField] private bool parentEffectToObject = false;
+    
+    private bool isDying = false;
 
-    [Tooltip("How much the sprite scales up during the poof (1 = no scale, 2 = doubles in size).")]
-    [SerializeField] private float scaleMultiplier = 2.0f;
-
-    [Tooltip("If true, destroys the GameObject after the effect. If false, just hides it (safer for reset).")]
-    [SerializeField] private bool destroyAfter = false;
-
-    [Header("Optional")]
-    [Tooltip("Leave empty to auto-find on this GameObject or its children.")]
-    [SerializeField] private SpriteRenderer targetRenderer;
-
-    private Vector3 originalScale;
-
-    void Awake()
+    /// <summary>
+    /// Plays only the smoke effect (no disabling/destroying).
+    /// Useful for spawn/teleport VFX while keeping the object alive.
+    /// </summary>
+    public void PlaySpawnEffect()
     {
-        // Auto-find the SpriteRenderer if not manually assigned.
-        if (targetRenderer == null)
-            targetRenderer = GetComponentInChildren<SpriteRenderer>();
-
-        if (targetRenderer == null)
-            Debug.LogWarning("DeathEffect: No SpriteRenderer found on " + gameObject.name);
-
-        originalScale = transform.localScale;
+        SpawnSmokeEffect(transform.position);
     }
 
     /// <summary>
-    /// Called by PlayerHealth.OnPlayerDeath() — kicks off the poof coroutine.
+    /// Plays the death effect and destroys the GameObject after a delay.
+    /// Does not destroy the player (objects with PlayerHealth component).
+    /// Call this method when the object should die.
     /// </summary>
     public void PlayDeathEffect()
     {
-        StartCoroutine(PoofRoutine());
+        if (isDying) return; // Prevent multiple calls
+        isDying = true;
+        
+        // Don't destroy the player (it is restored on game reset).
+        bool isPlayer = GetComponent<PlayerHealth>() != null;
+        
+        SpawnSmokeEffect(transform.position);
+        
+        // Disable the GameObject's renderer and collider immediately for visual feedback
+        DisableComponents();
+        
+        // Destroy everything except the player (archers/enemies should be removed from the hierarchy).
+        if (!isPlayer)
+        {
+            // Destroy the GameObject after a short delay
+            Destroy(gameObject, destroyDelay);
+        }
     }
 
-    private IEnumerator PoofRoutine()
+    private void SpawnSmokeEffect(Vector3 originPosition)
     {
-        if (targetRenderer == null) yield break;
+        // Play the smoke effect
+        if (smokeEffectPrefab == null) return;
 
-        float elapsed = 0f;
-        Vector3 targetScale = originalScale * scaleMultiplier;
-        Color startColor = targetRenderer.color;
-        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        Vector3 spawnPosition = originPosition + effectOffset;
+        GameObject smokeEffect = Instantiate(smokeEffectPrefab, spawnPosition, Quaternion.identity);
 
-        while (elapsed < duration)
+        // Optionally parent the effect to this object
+        if (parentEffectToObject)
         {
-            float t = elapsed / duration;
-
-            // Scale up
-            transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
-
-            // Fade out
-            targetRenderer.color = Color.Lerp(startColor, endColor, t);
-
-            elapsed += Time.unscaledDeltaTime; // Works even when timeScale = 0
-            yield return null;
+            smokeEffect.transform.SetParent(transform);
         }
 
-        // Snap to final state
-        transform.localScale = targetScale;
-        targetRenderer.color = endColor;
-
-        if (destroyAfter)
-            Destroy(gameObject);
+        // Handle particle systems - auto-destroy when finished
+        ParticleSystem particles = smokeEffect.GetComponent<ParticleSystem>();
+        if (particles != null)
+        {
+            // If it's a particle system, destroy it after it finishes playing
+            float duration = particles.main.duration + particles.main.startLifetime.constantMax;
+            Destroy(smokeEffect, duration);
+        }
+        // Handle animator-based animations - auto-destroy when finished
         else
-            gameObject.SetActive(false); // Hidden but still resettable
-    }
-
-    /// <summary>
-    /// Resets the player's visual state — call this on restart before re-enabling.
-    /// </summary>
-    public void ResetEffect()
-    {
-        transform.localScale = originalScale;
-
-        if (targetRenderer != null)
         {
-            Color c = targetRenderer.color;
-            targetRenderer.color = new Color(c.r, c.g, c.b, 1f);
+            Animator animator = smokeEffect.GetComponent<Animator>();
+            if (animator != null)
+            {
+                // Start a coroutine on the smoke effect itself so it continues even if this GameObject is destroyed
+                // Add a component to the smoke effect to run the coroutine
+                SmokeDestroyer destroyer = smokeEffect.AddComponent<SmokeDestroyer>();
+                destroyer.Initialize(animator);
+            }
+            // Handle legacy Animation component
+            else
+            {
+                Animation animation = smokeEffect.GetComponent<Animation>();
+                if (animation != null && animation.clip != null)
+                {
+                    // Destroy after the animation clip finishes
+                    Destroy(smokeEffect, animation.clip.length);
+                }
+            }
         }
-
-        gameObject.SetActive(true);
     }
+    
+    /// <summary>
+    /// Re-enables all components that were disabled by DisableComponents().
+    /// Used to restore the player after death.
+    /// </summary>
+    public void ReenableComponents()
+    {
+        // Reset the dying state
+        isDying = false;
+        
+        // Re-enable sprite renderer
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+        
+        // Re-enable all colliders
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            if (col != null)
+            {
+                col.enabled = true;
+            }
+        }
+        
+        // Re-enable animator
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
+        
+        // Re-enable all MonoBehaviour scripts
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            if (script != null && 
+                !(script is Transform))
+            {
+                script.enabled = true;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Disables visual and collision components so the object appears to disappear
+    /// while the smoke effect plays.
+    /// </summary>
+    private void DisableComponents()
+    {
+        // Disable sprite renderer
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
+        
+        // Disable all colliders
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            col.enabled = false;
+        }
+        
+        // Disable animator
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.enabled = false;
+        }
+        
+        // Disable any movement scripts
+        MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            // Don't disable this script or essential Unity components
+            if (script != this && script != null && 
+                !(script is Transform) && 
+                !(script is DeathEffect))
+            {
+                script.enabled = false;
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Helper component that runs on the smoke effect GameObject to destroy it after animation completes.
+    /// This ensures the coroutine continues even if the original GameObject is destroyed.
+    /// </summary>
+    private class SmokeDestroyer : MonoBehaviour
+    {
+        private Animator animator;
+        
+        public void Initialize(Animator anim)
+        {
+            animator = anim;
+            StartCoroutine(DestroyAfterAnimation());
+        }
+        
+        private IEnumerator DestroyAfterAnimation()
+        {
+            // Wait a frame to ensure the animator has started playing
+            yield return null;
+            
+            // Get the current animation state info
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            float animationLength = stateInfo.length;
+            
+            // Wait for the animation to complete
+            yield return new WaitForSeconds(animationLength);
+            
+            // Destroy the smoke effect GameObject (which this component is attached to)
+            Destroy(gameObject);
+        }
+    }
+    
 }
