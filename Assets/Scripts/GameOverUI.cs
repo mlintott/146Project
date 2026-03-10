@@ -19,6 +19,8 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private TextMeshProUGUI restartButtonText;
     [SerializeField] private Image restartButtonImage;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private TextMeshProUGUI quitButtonText;
 
     [Header("Decorative")]
     [SerializeField] private Image dividerLine;
@@ -45,6 +47,9 @@ public class GameOverUI : MonoBehaviour
 
         if (restartButton != null)
             restartButton.onClick.AddListener(OnRestartClicked);
+
+        if (quitButton != null)
+            quitButton.onClick.AddListener(OnQuitClicked);
 
         ApplyStyle();
     }
@@ -88,6 +93,14 @@ public class GameOverUI : MonoBehaviour
             restartButtonText.characterSpacing = 12f;
             restartButtonText.fontStyle        = FontStyles.Bold;
         }
+
+        // Quit button text — RED (matches restart button)
+        if (quitButtonText != null)
+        {
+            quitButtonText.color            = BtnRed;
+            quitButtonText.characterSpacing = 12f;
+            quitButtonText.fontStyle        = FontStyles.Bold;
+        }
     }
 
     // ── Public API ────────────────────────────────────────────────────────────
@@ -102,6 +115,7 @@ public class GameOverUI : MonoBehaviour
         SetImgAlpha(dividerLine,   0f);
         SetImgAlpha(sheikahEye,    0f);
         if (restartButton != null) restartButton.gameObject.SetActive(false);
+        if (quitButton != null) quitButton.gameObject.SetActive(false);
 
         StartCoroutine(RevealSequence());
     }
@@ -143,6 +157,8 @@ public class GameOverUI : MonoBehaviour
             restartButton.gameObject.SetActive(true);
             StartCoroutine(PulseButton());
         }
+        if (quitButton != null)
+            quitButton.gameObject.SetActive(true);
     }
 
     IEnumerator PulseButton()
@@ -152,6 +168,9 @@ public class GameOverUI : MonoBehaviour
             float t = (Mathf.Sin(Time.unscaledTime * 2.2f) + 1f) * 0.5f;
             if (restartButtonText != null)
                 restartButtonText.color = Color.Lerp(
+                    new Color(BtnRed.r, BtnRed.g, BtnRed.b, 0.45f), BtnRed, t);
+            if (quitButtonText != null)
+                quitButtonText.color = Color.Lerp(
                     new Color(BtnRed.r, BtnRed.g, BtnRed.b, 0.45f), BtnRed, t);
             yield return null;
         }
@@ -170,7 +189,9 @@ public class GameOverUI : MonoBehaviour
 
     public void OnQuitClicked()
     {
-        GameManager.Instance?.QuitGame();
+        Hide();
+        Time.timeScale = 1f; // Unfreeze time before loading
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Loads MainMenu (index 0)
     }
 
     // ── Fade helpers ──────────────────────────────────────────────────────────
