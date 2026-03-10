@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MainMenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: c84cf069501c44f5fa894000c57bfeb7
   - enabled: 1
     path: Assets/Scenes/InfiniteBattlefield.unity
